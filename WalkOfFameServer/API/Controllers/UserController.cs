@@ -10,28 +10,22 @@ namespace WalkOfFameServer.API.Controllers
     [ApiController, Route("[controller]")]
     public class UserController : CoreController
     {
-        private readonly UserService _service;
         private readonly IMapper _mapper;
 
-        public UserController(UserService service, IMapper mapper)
+        public UserController(UserService service, IMapper mapper) : base(service)
         {
-            _service = service;
             _mapper = mapper;
         }
         
         [HttpGet, Authorize]
-        public async Task<IActionResult> GetCurrentUser()
+        public async Task<IActionResult> Get()
         {
-            var currentId = GetCurrentUserId();
-            
-            if (!currentId.HasValue) return Unauthorized();
-            
-            var user = await _service.GetById(currentId.Value);
+            var currentUser = await GetCurrentUser();
 
-            if (user == null) return Unauthorized();
+            if (currentUser == null) return Unauthorized();
             
             return Ok(new {
-                data = _mapper.Map<UserDto>(user)
+                data = _mapper.Map<UserDto>(currentUser)
             });
         }
     }
