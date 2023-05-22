@@ -1,12 +1,12 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WalkOfFameServer.Models
 {
     public class Scoring
     {
-        [Key]
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
         [Required]
         [StringLength(100)] 

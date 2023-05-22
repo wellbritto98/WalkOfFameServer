@@ -1,9 +1,9 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace WalkOfFameServer.Models
+namespace WalkOfFameServer.Models.City
 {
-    public class Company
+    public class ZoneType
     {
         public Guid Id { get; set; }
 

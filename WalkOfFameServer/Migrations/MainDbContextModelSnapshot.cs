@@ -19,7 +19,174 @@ namespace WalkOfFameServer.Migrations
                 .HasAnnotation("ProductVersion", "7.0.5")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
-            modelBuilder.Entity("WalkOfFameServer.Models.User", b =>
+            modelBuilder.Entity("WalkOfFameServer.Models.Characters.Character", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<int>("Age")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("BirthAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int>("BirthCityId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CurrentLocationId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)");
+
+                    b.Property<ulong>("Money")
+                        .HasColumnType("bigint unsigned");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("char(36)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Characters");
+                });
+
+            modelBuilder.Entity("WalkOfFameServer.Models.Characters.CharacterRelationship", b =>
+                {
+                    b.Property<int>("CharacterOneId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CharacterTwoId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CharacterOneFriendship")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CharacterOneHate")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CharacterOneLove")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CharacterTwoFriendship")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CharacterTwoHate")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CharacterTwoLove")
+                        .HasColumnType("int");
+
+                    b.HasKey("CharacterOneId", "CharacterTwoId");
+
+                    b.HasIndex("CharacterTwoId");
+
+                    b.ToTable("CharacterRelationship");
+                });
+
+            modelBuilder.Entity("WalkOfFameServer.Models.City.City", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("Country")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)");
+
+                    b.Property<string>("Timezone")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Cities");
+                });
+
+            modelBuilder.Entity("WalkOfFameServer.Models.City.Zone", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
+
+                    b.Property<int>("CityId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("InfrastructureQuality")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<int>("Quality")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TypeId")
+                        .HasColumnType("int");
+
+                    b.Property<Guid>("ZoneTypeId")
+                        .HasColumnType("char(36)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CityId");
+
+                    b.HasIndex("ZoneTypeId");
+
+                    b.ToTable("Zone");
+                });
+
+            modelBuilder.Entity("WalkOfFameServer.Models.City.ZoneType", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("varchar(100)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ZoneType");
+                });
+
+            modelBuilder.Entity("WalkOfFameServer.Models.Company", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("varchar(100)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Companies");
+                });
+
+            modelBuilder.Entity("WalkOfFameServer.Models.Users.User", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -27,7 +194,7 @@ namespace WalkOfFameServer.Migrations
 
                     b.Property<string>("Email")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasColumnType("varchar(255)");
 
                     b.Property<DateTime>("LastLoginAt")
                         .HasColumnType("datetime(6)");
@@ -41,11 +208,83 @@ namespace WalkOfFameServer.Migrations
 
                     b.Property<string>("UserName")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasColumnType("varchar(255)");
 
                     b.HasKey("Id");
 
+                    b.HasIndex("Email")
+                        .IsUnique();
+
+                    b.HasIndex("UserName")
+                        .IsUnique();
+
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("WalkOfFameServer.Models.Characters.Character", b =>
+                {
+                    b.HasOne("WalkOfFameServer.Models.Users.User", "User")
+                        .WithMany("Characters")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("WalkOfFameServer.Models.Characters.CharacterRelationship", b =>
+                {
+                    b.HasOne("WalkOfFameServer.Models.Characters.Character", "CharacterOne")
+                        .WithMany("RelationshipsAsCharacterOne")
+                        .HasForeignKey("CharacterOneId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("WalkOfFameServer.Models.Characters.Character", "CharacterTwo")
+                        .WithMany("RelationshipsAsCharacterTwo")
+                        .HasForeignKey("CharacterTwoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("CharacterOne");
+
+                    b.Navigation("CharacterTwo");
+                });
+
+            modelBuilder.Entity("WalkOfFameServer.Models.City.Zone", b =>
+                {
+                    b.HasOne("WalkOfFameServer.Models.City.City", "City")
+                        .WithMany("Zones")
+                        .HasForeignKey("CityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("WalkOfFameServer.Models.City.ZoneType", "ZoneType")
+                        .WithMany()
+                        .HasForeignKey("ZoneTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("City");
+
+                    b.Navigation("ZoneType");
+                });
+
+            modelBuilder.Entity("WalkOfFameServer.Models.Characters.Character", b =>
+                {
+                    b.Navigation("RelationshipsAsCharacterOne");
+
+                    b.Navigation("RelationshipsAsCharacterTwo");
+                });
+
+            modelBuilder.Entity("WalkOfFameServer.Models.City.City", b =>
+                {
+                    b.Navigation("Zones");
+                });
+
+            modelBuilder.Entity("WalkOfFameServer.Models.Users.User", b =>
+                {
+                    b.Navigation("Characters");
                 });
 #pragma warning restore 612, 618
         }

@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using WalkOfFameServer.API.Dtos.Incoming.Auth;
 using WalkOfFameServer.Models;
+using WalkOfFameServer.Models.Users;
 using WalkOfFameServer.Services;
 
 namespace WalkOfFameServer.API.Controllers

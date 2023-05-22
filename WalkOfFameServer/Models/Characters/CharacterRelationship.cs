@@ -1,21 +1,13 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
 
-namespace WalkOfFameServer.Models
+namespace WalkOfFameServer.Models.Characters
 {
-    public class Relationship
+    [PrimaryKey("CharacterOneId", "CharacterTwoId")]
+    public class CharacterRelationship
     {
-        [Key]
-        [ForeignKey("CharacterOne")]
-        [Required]
-        public int CharacterOneId { get; set; }
-
-        [Key]
-        [ForeignKey("CharacterTwo")]
-        [Required]
-        public int CharacterTwoId { get; set; }
-
         [Required]
         [DefaultValue(0)]
         public int CharacterOneLove { get; set; }
@@ -40,8 +32,10 @@ namespace WalkOfFameServer.Models
         [DefaultValue(0)]
         public int CharacterTwoHate { get; set; }
 
-        public virtual Character CharacterOne { get; set; }
-        public virtual Character CharacterTwo { get; set; }
-
+        [ForeignKey("CharacterOneId")]
+        public Character CharacterOne { get; set; }
+        
+        [ForeignKey("CharacterTwoId")]
+        public Character CharacterTwo { get; set; }
     }
 }

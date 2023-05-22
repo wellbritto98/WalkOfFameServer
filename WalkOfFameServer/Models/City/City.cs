@@ -1,11 +1,12 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using WalkOfFameServer.Models.Characters;
 
-namespace WalkOfFameServer.Models
+namespace WalkOfFameServer.Models.City
 {
     public class City
     {
-        [Key]
         public int Id { get; set; }
 
         [Required]
@@ -19,5 +20,8 @@ namespace WalkOfFameServer.Models
         [Required]
         [StringLength(50)] 
         public string Timezone { get; set; }
+        
+        [InverseProperty("City")]
+        public List<Zone> Zones { get; } = new();
     }
 }

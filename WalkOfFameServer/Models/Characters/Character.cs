@@ -1,18 +1,16 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using WalkOfFameServer.Models.Users;
 
-namespace WalkOfFameServer.Models
+namespace WalkOfFameServer.Models.Characters
 {
     public class Character
     {
         [Key]
         public int Id { get; set; }
-
-        [Required]
-        [ForeignKey("User")]
-        public Guid UserId { get; set; }
 
         [Required]
         [StringLength(50)]
@@ -36,7 +34,13 @@ namespace WalkOfFameServer.Models
         [DefaultValue(0)]
         public ulong Money { get; set; }
 
-        public virtual ICollection<Relationship> RelationshipsAsCharacterOne { get; set; }
-        public virtual ICollection<Relationship> RelationshipsAsCharacterTwo { get; set; }
+        [ForeignKey("UserId")]
+        public User User { get; init; }
+        
+        [InverseProperty("CharacterOne")]
+        public List<CharacterRelationship> RelationshipsAsCharacterOne { get; } = new();
+        
+        [InverseProperty("CharacterTwo")]
+        public List<CharacterRelationship> RelationshipsAsCharacterTwo { get; } = new();
     }
 }

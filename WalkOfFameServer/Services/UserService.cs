@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using WalkOfFameServer.Database;
-using WalkOfFameServer.Models;
+using WalkOfFameServer.Models.Users;
 
 namespace WalkOfFameServer.Services
 {
