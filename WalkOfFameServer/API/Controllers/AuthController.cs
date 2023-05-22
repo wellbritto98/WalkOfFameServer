@@ -2,9 +2,12 @@
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using WalkOfFameServer.API.Dtos.Incoming.Auth;
+using WalkOfFameServer.API.Dtos.Outgoing.Auth;
+using WalkOfFameServer.API.Dtos.Outgoing.User;
 using WalkOfFameServer.Models;
 using WalkOfFameServer.Models.Users;
 using WalkOfFameServer.Services;
@@ -15,11 +18,13 @@ namespace WalkOfFameServer.API.Controllers
     {
         private readonly UserService _service;
         private readonly UtilsService _utils;
+        private readonly IMapper _mapper;
 
-        public AuthController(UserService service, UtilsService utils)
+        public AuthController(UserService service, UtilsService utils, IMapper mapper)
         {
             _service = service;
             _utils = utils;
+            _mapper = mapper;
         }
 
         [HttpPost("Login")]
@@ -35,10 +40,10 @@ namespace WalkOfFameServer.API.Controllers
             });
             
             return Ok(new {
-                data = new {
-                    token = new JwtSecurityTokenHandler().WriteToken(token),
-                    expiration = token.ValidTo,
-                    user
+                data = new LoginResponse {
+                    Token = new JwtSecurityTokenHandler().WriteToken(token),
+                    ExpiresAt = token.ValidTo,
+                    User = _mapper.Map<UserDto>(user)
                 }
             });
         }
@@ -66,10 +71,10 @@ namespace WalkOfFameServer.API.Controllers
             });
             
             return Ok(new {
-                data = new {
-                    token = new JwtSecurityTokenHandler().WriteToken(token),
-                    expiration = token.ValidTo,
-                    user
+                data = new LoginResponse {
+                    Token = new JwtSecurityTokenHandler().WriteToken(token),
+                    ExpiresAt = token.ValidTo,
+                    User = _mapper.Map<UserDto>(user)
                 }
             });
         }

@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using WalkOfFameServer.Models;
 using WalkOfFameServer.Models.Characters;
-using WalkOfFameServer.Models.City;
+using WalkOfFameServer.Models.Cities;
+using WalkOfFameServer.Models.Companies;
 using WalkOfFameServer.Models.Users;
 
 namespace WalkOfFameServer.Database

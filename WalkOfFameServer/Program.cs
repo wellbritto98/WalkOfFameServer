@@ -18,6 +18,7 @@ ConfigurationManager configuration = builder.Configuration;
 
 var connString = builder.Configuration.GetConnectionString("WebApiDatabase");
 builder.Services.AddDbContext<MainDbContext>(options => options.UseMySql(connString, ServerVersion.AutoDetect(connString)));
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 builder.Services.AddCors(c =>
 {

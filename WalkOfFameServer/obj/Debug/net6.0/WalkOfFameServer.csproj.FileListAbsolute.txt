@@ -59,3 +59,5 @@ D:\Development\WalkOfFameServer\WalkOfFameServer\WalkOfFameServer\bin\Debug\net6
 D:\Development\WalkOfFameServer\WalkOfFameServer\WalkOfFameServer\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 D:\Development\WalkOfFameServer\WalkOfFameServer\WalkOfFameServer\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
 D:\Development\WalkOfFameServer\WalkOfFameServer\WalkOfFameServer\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll
+D:\Development\WalkOfFameServer\WalkOfFameServer\WalkOfFameServer\bin\Debug\net6.0\AutoMapper.dll
+D:\Development\WalkOfFameServer\WalkOfFameServer\WalkOfFameServer\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
