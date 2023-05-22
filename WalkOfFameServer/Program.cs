@@ -31,6 +31,7 @@ builder.Services.AddControllers().AddJsonOptions(x =>
 builder.Services.AddHttpClient();
 builder.Services.AddScoped<UtilsService>();
 builder.Services.AddScoped<UserService>();
+builder.Services.AddScoped<CityService>();
 
 builder.Services.AddAuthentication(options =>
 {
