@@ -9,7 +9,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using WalkOfFameServer.API.Middleware;
 using WalkOfFameServer.Database;
+using WalkOfFameServer.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 ConfigurationManager configuration = builder.Configuration;
@@ -26,6 +28,8 @@ builder.Services.AddControllers().AddJsonOptions(x =>
     x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 
 builder.Services.AddHttpClient();
+builder.Services.AddScoped<UtilsService>();
+builder.Services.AddScoped<UserService>();
 
 builder.Services.AddAuthentication(options =>
 {
@@ -86,7 +90,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseAuthentication();
 app.UseAuthorization();
-
+app.UsePermission();
 app.MapControllers();
 
 app.Run();
