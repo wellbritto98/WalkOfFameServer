@@ -2,7 +2,7 @@
 {
     public enum CompanyTypeEnum
     {
-        PRIVATE,
-        PUBLIC
+        Private,
+        Public
     }
 }
