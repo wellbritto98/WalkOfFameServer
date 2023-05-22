@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using WalkOfFameServer.Enums;
 using WalkOfFameServer.Models.Cities;
 using WalkOfFameServer.Models.Users;
 
@@ -27,6 +28,9 @@ namespace WalkOfFameServer.Models.Characters
         [Required]
         [ForeignKey("BirthCityId")]
         public City BirthCity { get; set; }
+        
+        [Required]
+        public GenderEnum Gender { get; set; }
 
         [Required]
         [ForeignKey("CurrentLocationId")]
