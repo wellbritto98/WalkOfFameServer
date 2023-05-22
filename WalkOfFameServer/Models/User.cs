@@ -13,5 +13,6 @@ namespace WalkOfFameServer.Models
         
         [JsonIgnore]
         public string Password { get; set; }
+        public virtual ICollection<Character> Characters { get; set; }
     }
 }
