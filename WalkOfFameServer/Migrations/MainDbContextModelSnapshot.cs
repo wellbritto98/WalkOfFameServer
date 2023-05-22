@@ -90,7 +90,7 @@ namespace WalkOfFameServer.Migrations
 
                     b.HasIndex("CharacterTwoId");
 
-                    b.ToTable("CharacterRelationship");
+                    b.ToTable("CharacterRelationships");
                 });
 
             modelBuilder.Entity("WalkOfFameServer.Models.City.City", b =>
@@ -151,7 +151,7 @@ namespace WalkOfFameServer.Migrations
 
                     b.HasIndex("ZoneTypeId");
 
-                    b.ToTable("Zone");
+                    b.ToTable("Zones");
                 });
 
             modelBuilder.Entity("WalkOfFameServer.Models.City.ZoneType", b =>
@@ -167,7 +167,7 @@ namespace WalkOfFameServer.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ZoneType");
+                    b.ToTable("ZoneTypes");
                 });
 
             modelBuilder.Entity("WalkOfFameServer.Models.Company", b =>

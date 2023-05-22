@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace WalkOfFameServer.Models.Characters
 {
+    [Table("CharacterRelationships")]
     [PrimaryKey("CharacterOneId", "CharacterTwoId")]
     public class CharacterRelationship
     {

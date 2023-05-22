@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WalkOfFameServer.Models.City
 {
+    [Table("Zones")]
     public class Zone
     {
         public Guid Id { get; set; }
