@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using WalkOfFameServer.Enums;
 
 namespace WalkOfFameServer.Models.Cities
 {
@@ -22,7 +23,7 @@ namespace WalkOfFameServer.Models.Cities
         [ForeignKey("CityId")]
         public City City { get; set; } 
         
-        [ForeignKey("ZoneTypeId")]
-        public ZoneType Type { get; set; } 
+        [Required]
+        public ZoneTypeEnum Type { get; set; } 
     }
 }

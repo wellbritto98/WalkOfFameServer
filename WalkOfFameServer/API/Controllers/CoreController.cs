@@ -6,6 +6,7 @@ using WalkOfFameServer.Services;
 
 namespace WalkOfFameServer.API.Controllers
 {
+    [ApiController, Route("/Api/[controller]")]
     public class CoreController : ControllerBase
     {
         protected readonly UserService _userService;

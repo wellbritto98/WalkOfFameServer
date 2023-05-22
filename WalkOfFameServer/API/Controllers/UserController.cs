@@ -7,7 +7,6 @@ using WalkOfFameServer.Services;
 
 namespace WalkOfFameServer.API.Controllers
 {
-    [ApiController, Route("[controller]")]
     public class UserController : CoreController
     {
         private readonly IMapper _mapper;
