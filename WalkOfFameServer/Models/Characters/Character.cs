@@ -25,12 +25,12 @@ namespace WalkOfFameServer.Models.Characters
         public DateTime BirthAt { get; set; } = DateTime.Now;
 
         [Required]
-        [ForeignKey("CityId")]
-        public City BirthCityId { get; set; }
+        [ForeignKey("BirthCityId")]
+        public City BirthCity { get; set; }
 
         [Required]
-        [ForeignKey("LocationId")]
-        public Location CurrentLocationId { get; set; }
+        [ForeignKey("CurrentLocationId")]
+        public Location CurrentLocation { get; set; }
 
         [DefaultValue(0)]
         public ulong Money { get; set; }

@@ -22,7 +22,7 @@ namespace WalkOfFameServer.Models.Cities
         [Required]
         public int Quality { get; set; }
 
-        [ForeignKey("ScoringName")]
+        [ForeignKey("ScoringId")]
         [Required]
         public Scoring Scoring { get; set; }
 

@@ -14,10 +14,6 @@ namespace WalkOfFameServer.Models.Cities
         public string Name { get; set; }
 
         [Required]
-        [ForeignKey("ZoneType.cs")]
-        public int TypeId { get; set; }
-
-        [Required]
         public int Quality { get; set; }
 
         [Required]
@@ -27,6 +23,6 @@ namespace WalkOfFameServer.Models.Cities
         public City City { get; set; } 
         
         [ForeignKey("ZoneTypeId")]
-        public ZoneType ZoneType { get; set; } 
+        public ZoneType Type { get; set; } 
     }
 }

@@ -1,25 +1,26 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
 using WalkOfFameServer.Models.Characters;
 
 namespace WalkOfFameServer.Models.Companies
 {
+    [PrimaryKey("CharacterId", "CompanyId")]
     public class CompanyShareholder
     {
-        [Key]
-        [ForeignKey("CharacterId")]
         [Required]
-        public Character CharacterId { get; set; }
+        [ForeignKey("CharacterId")]
+        public Character Character { get; set; }
 
         [Required]
         [ForeignKey("CompanyId")]
-        public Company CompanyId { get; set; }
+        public Company Company { get; set; }
 
         [Required]
         public int Shares { get; set; }
 
-        [DefaultValue(0)]
-        public short IsPresident { get; set; }
+        [DefaultValue(false)]
+        public bool IsPresident { get; set; }
     }
 }

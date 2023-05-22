@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using WalkOfFameServer.Enums;
 using WalkOfFameServer.Models.Cities;
 
 namespace WalkOfFameServer.Models.Companies
@@ -18,18 +19,8 @@ namespace WalkOfFameServer.Models.Companies
         [ForeignKey("CityId")]
         public City City { get; set; }
 
-        public enum CompanyType
-        { 
-          PRIVATE,
-          PUBLIC
-        }
-    
-        public CompanyType Type { get; set; }
+        public CompanyTypeEnum Type { get; set; }
 
         public ulong Money { get; set; }
-
-        
-
-
     }
 }
