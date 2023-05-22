@@ -2,12 +2,11 @@
 {
     public enum ZoneTypeEnum
     {
-        CenterOfTown,
+        Downtown,
         Residential,
         Commercial,
         Industrial,
-        Countryside,
-        Slum,  
-        
+        CountrySide,
+        Slum
     }
 }

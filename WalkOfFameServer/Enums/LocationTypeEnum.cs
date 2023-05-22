@@ -2,13 +2,16 @@
 {
     public enum LocationTypeEnum
     {
+        Airspace,
+        Highway,
+        
         Airport,
         Bank,
         BusTerminal,
         CarDealer,
         CityHall,
         ConstructionCompany,
-        Countryside,
+        CountrySide,
         CourtHouse,
         Factory,
         FestivalHall, //Espaço onde acontece cerimônia de oscar, cannes, etc.
@@ -17,10 +20,8 @@
         Graveyard,
         Gym,
         HeadOffice,
-        Highway,
         Hospital,
         Hotel,
-        JamPlace, //Local de studio de ensaio
         LostAndFound,
         Museum,
         Nursery,
@@ -45,10 +46,8 @@
         SubwayLine,
         TattooParlor,
         Temple,
-        TVStation,
+        TelevisionStation,
         University,
-        WaterReservoir 
-
-        
+        WaterReservoir
     }
 }
