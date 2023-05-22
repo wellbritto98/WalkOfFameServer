@@ -3,11 +3,11 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using WalkOfFameServer.Models.Characters;
 
-namespace WalkOfFameServer.Models.City
+namespace WalkOfFameServer.Models.Cities
 {
     public class City
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
         [Required]
         [StringLength(50)]

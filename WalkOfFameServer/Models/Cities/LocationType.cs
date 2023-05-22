@@ -1,16 +1,14 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
-namespace WalkOfFameServer.Models.City
+namespace WalkOfFameServer.Models.Cities
 {
-    [Table("ZoneTypes")]
-    public class ZoneType
+    public class LocationType
     {
         public Guid Id { get; set; }
 
         [Required]
-        [StringLength(100)]
+        [StringLength(100)] 
         public string Name { get; set; }
     }
 }

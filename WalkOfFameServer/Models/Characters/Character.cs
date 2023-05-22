@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using WalkOfFameServer.Models.Cities;
 using WalkOfFameServer.Models.Users;
 
 namespace WalkOfFameServer.Models.Characters
@@ -24,12 +25,12 @@ namespace WalkOfFameServer.Models.Characters
         public DateTime BirthAt { get; set; } = DateTime.Now;
 
         [Required]
-        [ForeignKey("City")]
-        public int BirthCityId { get; set; }
+        [ForeignKey("CityId")]
+        public City BirthCityId { get; set; }
 
         [Required]
-        [ForeignKey("Location")]
-        public int CurrentLocationId { get; set; }
+        [ForeignKey("LocationId")]
+        public Location CurrentLocationId { get; set; }
 
         [DefaultValue(0)]
         public ulong Money { get; set; }

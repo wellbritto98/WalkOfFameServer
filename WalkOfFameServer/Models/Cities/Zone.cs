@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace WalkOfFameServer.Models.City
+namespace WalkOfFameServer.Models.Cities
 {
     [Table("Zones")]
     public class Zone
