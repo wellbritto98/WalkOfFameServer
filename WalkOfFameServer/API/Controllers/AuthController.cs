@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -31,14 +32,14 @@ namespace WalkOfFameServer.API.Controllers
         public async Task<IActionResult> Login([FromBody] LoginRequest request)
         {
             var user = await _service.GetByUserNameAndPassword(request.UserName, request.Password);
-
+            
             if (user == null) return Unauthorized(new { message = "Username and/or password do not match!" });
 
             var token = _utils.GetJwtToken(new[] {
                 new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
             });
-            
+
             return Ok(new {
                 data = new LoginResponse {
                     Token = new JwtSecurityTokenHandler().WriteToken(token),

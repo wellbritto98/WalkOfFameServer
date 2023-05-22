@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using WalkOfFameServer.Database;
 using WalkOfFameServer.Models.Users;
@@ -25,7 +26,7 @@ namespace WalkOfFameServer.Services
             return user;
         }
         
-        public async Task<User?> GetById(int id)
+        public async Task<User?> GetById(Guid id)
         {
             return await _context.Users.FindAsync(id);
         }

@@ -1,12 +1,13 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System;
+using Microsoft.AspNetCore.Mvc;
 
 namespace WalkOfFameServer.API.Controllers
 {
     public class CoreController : ControllerBase
     {
-        protected int GetCurrentUserId()
+        protected Guid? GetCurrentUserId()
         {
-            return (int)HttpContext.Items["CurrentUserId"];
+            return new Guid(HttpContext.Items["CurrentUserId"]?.ToString());
         }
     }
 }

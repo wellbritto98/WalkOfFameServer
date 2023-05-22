@@ -6,7 +6,6 @@ using WalkOfFameServer.Models.Cities;
 
 namespace WalkOfFameServer.Models.Companies
 {
-
     public class Company
     {
         public Guid Id { get; set; }
