@@ -32,6 +32,7 @@ builder.Services.AddHttpClient();
 builder.Services.AddScoped<UtilsService>();
 builder.Services.AddScoped<UserService>();
 builder.Services.AddScoped<CityService>();
+builder.Services.AddScoped<CharacterService>();
 
 builder.Services.AddAuthentication(options =>
 {
