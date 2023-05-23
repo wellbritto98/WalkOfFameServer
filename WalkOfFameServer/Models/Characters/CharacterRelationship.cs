@@ -34,9 +34,9 @@ namespace WalkOfFameServer.Models.Characters
         public int CharacterTwoHate { get; set; }
 
         [ForeignKey("CharacterOneId")]
-        public Character CharacterOne { get; set; }
+        public virtual Character CharacterOne { get; set; }
         
         [ForeignKey("CharacterTwoId")]
-        public Character CharacterTwo { get; set; }
+        public virtual Character CharacterTwo { get; set; }
     }
 }

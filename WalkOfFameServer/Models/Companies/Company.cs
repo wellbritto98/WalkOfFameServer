@@ -8,7 +8,7 @@ namespace WalkOfFameServer.Models.Companies
 {
     public class Company
     {
-        public Guid Id { get; set; }
+        public long Id { get; set; }
 
         [Required]
         [StringLength(100)]
@@ -16,7 +16,7 @@ namespace WalkOfFameServer.Models.Companies
 
         [Required]
         [ForeignKey("CityId")]
-        public City City { get; set; }
+        public virtual City City { get; set; }
 
         public CompanyTypeEnum Type { get; set; }
 

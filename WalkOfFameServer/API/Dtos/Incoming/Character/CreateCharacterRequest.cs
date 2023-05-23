@@ -7,7 +7,7 @@ namespace WalkOfFameServer.API.Dtos.Incoming.Character
     public class CreateCharacterRequest
     {
         [Required(ErrorMessage = "empty")]
-        public Guid CityId { get; set; }
+        public long CityId { get; set; }
         
         [Required(ErrorMessage = "empty")]
         public GenderEnum Gender { get; set; }

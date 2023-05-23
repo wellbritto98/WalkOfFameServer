@@ -15,9 +15,9 @@ namespace WalkOfFameServer.API.Controllers
         {
             _userService = service;
         }
-        protected Guid? GetCurrentUserId()
+        protected long? GetCurrentUserId()
         {
-            return new Guid(HttpContext.Items["CurrentUserId"]?.ToString());
+            return long.Parse(HttpContext.Items["CurrentUserId"]?.ToString());
         }
 
         protected async Task<User?> GetCurrentUser()

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using IdGen;
 using Microsoft.EntityFrameworkCore;
 using WalkOfFameServer.Database;
 using WalkOfFameServer.Models.Users;
@@ -10,15 +11,18 @@ namespace WalkOfFameServer.Services
     {
         private readonly MainDbContext _context;
         private readonly UtilsService _utils;
+        private readonly IdGenerator _idGenerator;
 
-        public UserService(MainDbContext context, UtilsService utils)
+        public UserService(MainDbContext context, UtilsService utils, IdGenerator idGenerator)
         {
             _context = context;
             _utils = utils;
+            _idGenerator = idGenerator;
         }
         
         public async Task<User> Create(User user)
         {
+            user.Id = _idGenerator.CreateId();
             user.Password = _utils.HashSha512(user.Password);
             await _context.Users.AddAsync(user);
             await _context.SaveChangesAsync();
@@ -26,7 +30,7 @@ namespace WalkOfFameServer.Services
             return user;
         }
         
-        public async Task<User?> GetById(Guid id)
+        public async Task<User?> GetById(long id)
         {
             return await _context.Users.FindAsync(id);
         }

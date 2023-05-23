@@ -1,6 +1,7 @@
 using System;
 using System.Text;
 using System.Text.Json.Serialization;
+using IdGen.DependencyInjection;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
@@ -28,10 +29,12 @@ builder.Services.AddCors(c =>
 builder.Services.AddControllers().AddJsonOptions(x =>
     x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 
+builder.Services.AddIdGen(1);
 builder.Services.AddHttpClient();
 builder.Services.AddScoped<UtilsService>();
 builder.Services.AddScoped<UserService>();
 builder.Services.AddScoped<CityService>();
+builder.Services.AddScoped<ZoneService>();
 builder.Services.AddScoped<CharacterService>();
 
 builder.Services.AddAuthentication(options =>

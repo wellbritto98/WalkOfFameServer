@@ -11,11 +11,11 @@ namespace WalkOfFameServer.Models.Companies
     {
         [Required]
         [ForeignKey("CharacterId")]
-        public Character Character { get; set; }
+        public virtual Character Character { get; set; }
 
         [Required]
         [ForeignKey("CompanyId")]
-        public Company Company { get; set; }
+        public virtual Company Company { get; set; }
 
         [Required]
         public int Shares { get; set; }

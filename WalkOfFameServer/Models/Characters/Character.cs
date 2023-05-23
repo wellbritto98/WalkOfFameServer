@@ -11,8 +11,7 @@ namespace WalkOfFameServer.Models.Characters
 {
     public class Character
     {
-        [Key]
-        public int Id { get; set; }
+        public long Id { get; set; }
 
         [Required]
         [StringLength(50)]
@@ -25,22 +24,28 @@ namespace WalkOfFameServer.Models.Characters
 
         public DateTime BirthAt { get; set; } = DateTime.Now;
 
+        public long BirthCityId { get; set; }
+        
         [Required]
-        [ForeignKey("BirthCityId")]
-        public City BirthCity { get; set; }
+        [ForeignKey(nameof(BirthCityId))]
+        public virtual City BirthCity { get; set; }
         
         [Required]
         public GenderEnum Gender { get; set; }
+        
+        public long CurrentLocationId { get; set; }
 
         [Required]
-        [ForeignKey("CurrentLocationId")]
-        public Location CurrentLocation { get; set; }
+        [ForeignKey(nameof(CurrentLocationId))]
+        public virtual Location CurrentLocation { get; set; }
 
         [DefaultValue(0)]
         public ulong Money { get; set; }
+        
+        public long UserId { get; set; }
 
-        [ForeignKey("UserId")]
-        public User User { get; init; }
+        [ForeignKey(nameof(UserId))]
+        public virtual User User { get; init; }
         
         [InverseProperty("CharacterOne")]
         public List<CharacterRelationship> RelationshipsAsCharacterOne { get; } = new();

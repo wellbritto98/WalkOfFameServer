@@ -8,13 +8,10 @@ namespace WalkOfFameServer.Models.Cities
     [Table("Countries")]
     public class Country
     {
-        public Guid Id { get; set; }
+        public long Id { get; set; }
 
         [Required]
         [StringLength(50)]
         public string Name { get; set; }
-        
-        [InverseProperty("Country")]
-        public List<City> Cities { get; } = new();
     }
 }

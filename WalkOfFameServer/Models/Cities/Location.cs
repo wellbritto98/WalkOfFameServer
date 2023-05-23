@@ -1,5 +1,4 @@
-﻿using System;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using WalkOfFameServer.Enums;
@@ -8,36 +7,39 @@ using WalkOfFameServer.Models.Companies;
 
 namespace WalkOfFameServer.Models.Cities
 {
-
+    [Table("Locations")]
     public class Location
     {
-        public Guid Id { get; set; }
+        public long Id { get; set; }
 
         [Required]
         public string Name { get; set; }
-
-        [ForeignKey("ZoneId")]
-        [Required]
-        public Zone Zone { get; set; }
 
         [DefaultValue(0)]
         [Required]
         public int Quality { get; set; }
 
-        [ForeignKey("ScoringId")]
         [Required]
-        public Scoring Scoring { get; set; }
+        public ScoringEnum Scoring { get; set; }
 
         [Required]
         public LocationTypeEnum LocationType { get; set; }
-
-        [ForeignKey("CompanyId")]
-        [Required]
-        public Company Company { get; set; }
         
-        [ForeignKey("OwnerId")]
+        public long ZoneId { get; set; }
+
+        [ForeignKey(nameof(ZoneId))]
         [Required]
-        public Character Owner { get; set; }
+        public virtual Zone Zone { get; set; }
+        
+        public long? CompanyId { get; set; }
+
+        [ForeignKey(nameof(CompanyId))]
+        public virtual Company? Company { get; set; }
+        
+        public long? OwnerId { get; set; }
+        
+        [ForeignKey(nameof(OwnerId))]
+        public virtual Character? Owner { get; set; }
 
         [DefaultValue(0)]
         public ulong Money { get; set; }

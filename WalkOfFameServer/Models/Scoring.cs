@@ -5,7 +5,7 @@ namespace WalkOfFameServer.Models
 {
     public class Scoring
     {
-        public Guid Id { get; set; }
+        public string Id { get; set; }
 
         [Required]
         [StringLength(100)] 

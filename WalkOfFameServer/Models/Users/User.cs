@@ -11,7 +11,7 @@ namespace WalkOfFameServer.Models.Users
     [Index(nameof(UserName), IsUnique = true), Index(nameof(Email), IsUnique = true)]
     public class User
     {
-        public Guid Id { get; set; }
+        public long Id { get; set; }
         [Required]
         public string UserName { get; set; }
         [Required]
