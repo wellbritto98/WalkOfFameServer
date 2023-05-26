@@ -36,6 +36,7 @@ builder.Services.AddScoped<UserService>();
 builder.Services.AddScoped<CityService>();
 builder.Services.AddScoped<ZoneService>();
 builder.Services.AddScoped<CharacterService>();
+builder.Services.AddScoped<ArticleService>();
 
 builder.Services.AddAuthentication(options =>
 {
