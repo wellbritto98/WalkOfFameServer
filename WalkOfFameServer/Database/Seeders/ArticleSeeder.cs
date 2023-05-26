@@ -1,4 +1,5 @@
-﻿using IdGen;
+﻿using System;
+using IdGen;
 using Microsoft.EntityFrameworkCore;
 using WalkOfFameServer.Database.Seeds;
 using WalkOfFameServer.Models;
