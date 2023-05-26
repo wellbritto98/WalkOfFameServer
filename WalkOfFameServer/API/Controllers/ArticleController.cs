@@ -1,22 +1,27 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using WalkOfFameServer.Models;
 using WalkOfFameServer.Services;
 
 namespace WalkOfFameServer.API.Controllers
 {
-    public class ArticleController : CoreController
+    public class ArticleController : ControllerBase
     {
-        private ArticleService _articleService;
+        private readonly ArticleService _articleService;
 
-        public ArticleController(UserService service, ArticleService articleService) : base(service)
+        public ArticleController(ArticleService articleService)
         {
             _articleService = articleService;
         }
-        
+
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(long id)
         {
-            return Ok();
+            var article = await _articleService.GetById(id);
+            if (article == null)
+                return NotFound();
+
+            return Ok(new { data = article });
         }
     }
 }

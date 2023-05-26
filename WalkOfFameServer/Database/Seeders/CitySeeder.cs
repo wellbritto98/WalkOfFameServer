@@ -139,7 +139,7 @@ namespace WalkOfFameServer.Database.Seeders
                     { "zone.germany.berlin.rudow", new Zone { Id = IdGenerator.CreateId(), Name = "zone.germany.berlin.rudow", Type = ZoneTypeEnum.Slum, CityId = cities["city.germany.berlin"].Id }},
                     { "zone.italy.rome.tor_bella_monaca", new Zone { Id = IdGenerator.CreateId(), Name = "zone.italy.rome.tor_bella_monaca", Type = ZoneTypeEnum.Slum, CityId = cities["city.italy.rome"].Id }},
                     { "zone.united_kingdom.london.brixton", new Zone { Id = IdGenerator.CreateId(), Name = "zone.united_kingdom.london.brixton", Type = ZoneTypeEnum.Slum, CityId = cities["city.united_kingdom.london"].Id }},
-                    { "zone.canada.quebec.saint_roch", new Zone { Id = IdGenerator.CreateId(), Name = "zone.canada.quebec.saint_roch", Type = ZoneTypeEnum.Slum, CityId = cities["city.canada.quebec"].Id }},
+                    //{ "zone.canada.quebec.saint_roch", new Zone { Id = IdGenerator.CreateId(), Name = "zone.canada.quebec.saint_roch", Type = ZoneTypeEnum.Slum, CityId = cities["city.canada.quebec"].Id }},
                     { "zone.united_states.los_angeles.skid_row", new Zone { Id = IdGenerator.CreateId(), Name = "zone.united_states.los_angeles.skid_row", Type = ZoneTypeEnum.Slum, CityId = cities["city.united_states.los_angeles"].Id }},
                     { "zone.china.beijing.migrant_villages", new Zone { Id = IdGenerator.CreateId(), Name = "zone.china.beijing.migrant_villages", Type = ZoneTypeEnum.Slum, CityId = cities["city.china.beijing"].Id }},
                     { "zone.south_korea.seoul.guryong_village", new Zone { Id = IdGenerator.CreateId(), Name = "zone.south_korea.seoul.guryong_village", Type = ZoneTypeEnum.Slum, CityId = cities["city.south_korea.seoul"].Id }},
@@ -153,7 +153,7 @@ namespace WalkOfFameServer.Database.Seeders
             ModelBuilder.Entity<Zone>().HasData(zones.Values.ToList());
 
             var locations = new Dictionary<string, Location> {
-                { "Prefeitura de São Paulo", new Location { Id = IdGenerator.CreateId(), Name = "Prefeitura de São Paulo", ZoneId = zones["Praça da Sé"].Id, LocationType = LocationTypeEnum.CityHall, Scoring = ScoringEnum.Good } }
+                { "Prefeitura de São Paulo", new Location { Id = IdGenerator.CreateId(), Name = "Prefeitura de São Paulo", ZoneId = zones["zone.brazil.sao_paulo.praca_da_se"].Id, LocationType = LocationTypeEnum.CityHall, Scoring = ScoringEnum.Good } }
             };
 
             ModelBuilder.Entity<Location>().HasData(locations.Values.ToList());

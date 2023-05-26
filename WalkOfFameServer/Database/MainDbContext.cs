@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using WalkOfFameServer.Database.Seeders;
+using WalkOfFameServer.Models;
 using WalkOfFameServer.Models.Characters;
 using WalkOfFameServer.Models.Cities;
 using WalkOfFameServer.Models.Companies;
@@ -38,5 +39,9 @@ namespace WalkOfFameServer.Database
         public DbSet<Zone> Zones { get; set; }
         public DbSet<Location> Locations { get; set; }
         public DbSet<Company> Companies { get; set; }
+        public DbSet<Article> Articles { get; set; }
+        public DbSet<ArticleContent> ArticleContents { get; set; }
+
+
     }
 }
