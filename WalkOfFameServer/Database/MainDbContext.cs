@@ -30,6 +30,7 @@ namespace WalkOfFameServer.Database
         {
             base.OnModelCreating(modelBuilder);
             new CitySeeder(modelBuilder, IdGenerator).Seed();
+            new ArticleSeeder(modelBuilder, IdGenerator).Seed();
         }
         
         public DbSet<User> Users { get; set; }
